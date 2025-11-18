@@ -10,7 +10,7 @@ The goal of this assignment is to extend the existing cash‑only account system
 - **Accurate balance calculation** (cash and stock value)
 - **Session‑based state** (no persistence)
 
----
+--- 
 
 ## 📁 Project Structure
 
@@ -37,7 +37,7 @@ src/
 You can view the high-level class design and relationships here:
 
 Excalidraw Diagram:
-https://excalidraw.com/#json=vfB0vZvs08X8ww2q8F9TH,U0nkUHKjEaJgQMznI533Ng
+https://excalidraw.com/#json=EFH74r703PFBXgmo4O167,G1cI7npOXwGIsV21NrRHZQ
 
 ---
 
@@ -45,9 +45,12 @@ https://excalidraw.com/#json=vfB0vZvs08X8ww2q8F9TH,U0nkUHKjEaJgQMznI533Ng
 
 ### Cash & Stock Transactions  
 Supports deposits and withdrawals for cash and stock.
+Stock operations are done in integer units.
+Stock is fixed to ACME at 5 USD per unit, as per the requirements.
 
 ### Transaction History  
 All transactions in the session are recorded and retrievable.
+History is presented in the order transactions were entered 
 
 ### Balance Computation  
 Balance formula:  
@@ -57,8 +60,9 @@ stockBalance = (unitsDeposited – unitsWithdrawn) * 5
 totalBalance = cashBalance + stockBalance
 ```
 
-### AccountService / Transactional Logic  
-Centralized logic for processing transactions and updating balances.
+### Transactional Logic  
+TransactionalAccount centralizes the logic for applying transactions and updating balances.
+Uses TransactionType to categorize cash versus stock operations.
 
 ### Input‑driven Menu  
 Interactive UI through `UserInterface.java`.
