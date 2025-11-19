@@ -27,8 +27,6 @@ src/
             TransactionType.java
           application/
             UserInterface.java
-  test/
-    java/
 ```
 
 ---
@@ -37,7 +35,7 @@ src/
 You can view the high-level class design and relationships here:
 
 Excalidraw Diagram:
-https://excalidraw.com/#json=EFH74r703PFBXgmo4O167,G1cI7npOXwGIsV21NrRHZQ
+https://excalidraw.com/#json=LEpT-GBJNC9L2pdB8-ZG4,DPwwg1xItZCfBlXQMYifxA
 
 ---
 
@@ -46,7 +44,7 @@ https://excalidraw.com/#json=EFH74r703PFBXgmo4O167,G1cI7npOXwGIsV21NrRHZQ
 ### Cash & Stock Transactions  
 Supports deposits and withdrawals for cash and stock.
 Stock operations are done in integer units.
-Stock is fixed to ACME at 5 USD per unit, as per the requirements.
+Stock is fixed to ACME at $5 per unit, as per the requirements.
 
 ### Transaction History  
 All transactions in the session are recorded and retrievable.
@@ -64,8 +62,15 @@ totalBalance = cashBalance + stockBalance
 TransactionalAccount centralizes the logic for applying transactions and updating balances.
 Uses TransactionType to categorize cash versus stock operations.
 
-### Input‑driven Menu  
-Interactive UI through `UserInterface.java`.
+### Input Validation & Error Handling
+- UI validates numeric inputs using `scanner.hasNextDouble()`.
+- Prevents invalid operations such as:
+  - Negative amounts
+  - Fractional stock units
+  - Overdrafts (cash or stock)
+
+### Interactive Console Menu  
+All user interaction is implemented in `UserInterface.java`.
 
 ---
 
